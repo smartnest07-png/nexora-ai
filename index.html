@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NEXORA AI</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================= AUTH PAGE ================= -->
+  <div id="authPage" class="auth-page">
+
+    <div class="auth-card">
+
+      <div class="auth-logo">🤖</div>
+
+      <h1 id="authTitle">Welcome Back!</h1>
+
+      <p id="authSubtitle">
+        Login to continue to NEXORA AI
+      </p>
+
+      <!-- SIGNUP NAME -->
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="Full Name"
+        class="auth-input signup-only"
+      >
+
+      <!-- EMAIL -->
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="Email Address"
+        class="auth-input"
+      >
+
+      <!-- PASSWORD -->
+      <div class="password-box">
+
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+          class="auth-input"
+        >
+
+        <button
+          type="button"
+          id="showPassword"
+        >
+          👁️
+        </button>
+
+      </div>
+
+      <!-- LOGIN BUTTON -->
+      <button
+        type="button"
+        id="authBtn"
+        class="auth-btn"
+      >
+        Login
+      </button>
+
+      <p class="switch-auth">
+
+        <span id="switchText">
+          Don't have an account?
+        </span>
+
+        <button
+          type="button"
+          id="switchBtn"
+        >
+          Sign Up
+        </button>
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= MAIN APP ================= -->
+  <div id="appPage" style="display:none;">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside id="sidebar" class="sidebar">
+
+      <div class="sidebar-top">
+
+        <div class="sidebar-brand">
+          <span>🤖</span>
+          <h2>NEXORA AI</h2>
+        </div>
+
+        <button
+          type="button"
+          id="closeSidebar"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="sidebarNewChat"
+        class="new-chat-sidebar"
+      >
+        ➕ New Chat
+      </button>
+
+
+      <div class="history-title">
+        CHAT HISTORY
+      </div>
+
+
+      <div
+        id="historyList"
+        class="history-list"
+      >
+        <p class="empty-history">
+          No chats yet
+        </p>
+      </div>
+
+
+      <div class="sidebar-bottom">
+
+        <button
+          type="button"
+          id="profileBtn"
+          class="side-option"
+        >
+          👤 <span>Profile</span>
+        </button>
+
+
+        <button
+          type="button"
+          id="settingsBtn"
+          class="side-option"
+        >
+          ⚙️ <span>Settings</span>
+        </button>
+
+
+        <button
+          type="button"
+          id="logoutBtn"
+          class="side-option logout-option"
+        >
+          🚪 <span>Logout</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- OVERLAY -->
+    <div
+      id="overlay"
+      class="overlay"
+    ></div>
+
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+      <div class="brand">
+
+        <button
+          type="button"
+          id="menuBtn"
+          class="menu-btn"
+        >
+          ☰
+        </button>
+
+
+        <div class="logo">
+          🤖
+        </div>
+
+
+        <div>
+
+          <h2>NEXORA AI</h2>
+
+          <p>● Online</p>
+
+        </div>
+
+      </div>
+
+
+      <div class="header-actions">
+
+        <button
+          type="button"
+          id="newChatBtn"
+          title="New Chat"
+        >
+          ➕
+        </button>
+
+
+        <button
+          type="button"
+          id="clearChatBtn"
+          title="Clear Chat"
+        >
+          🗑️
+        </button>
+
+
+        <button
+          type="button"
+          id="themeBtn"
+          title="Change Theme"
+        >
+          🌙
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= CHAT ================= -->
+    <main
+      class="chat-container"
+      id="chat"
+    >
+
+      <div class="welcome">
+
+        <div class="big-logo">
+          🤖
+        </div>
+
+        <h1>
+          Hello,
+          <span id="userName">User</span>
+          👋
+        </h1>
+
+        <p>
+          How can NEXORA AI help you today?
+        </p>
+
+
+        <!-- SUGGESTED PROMPTS -->
+        <div class="suggested-prompts">
+
+          <button
+            type="button"
+            class="prompt-btn"
+            data-prompt="Help me write something"
+          >
+            ✍️ Help me write
+          </button>
+
+
+          <button
+            type="button"
+            class="prompt-btn"
+            data-prompt="Explain a topic simply"
+          >
+            💡 Explain something
+          </button>
+
+
+          <button
+            type="button"
+            class="prompt-btn"
+            data-prompt="Help me with coding"
+          >
+            💻 Help with coding
+          </button>
+
+
+          <button
+            type="button"
+            class="prompt-btn"
+            data-prompt="Tell me something interesting about Nepal"
+          >
+            🇳🇵 About Nepal
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- ================= INPUT AREA ================= -->
+    <div class="input-area">
+
+      <!-- HIDDEN FILE INPUT -->
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*,.pdf,.doc,.docx,.txt"
+        hidden
+      >
+
+
+      <!-- CHAT INPUT -->
+      <div class="input-box">
+
+        <button
+          type="button"
+          id="fileBtn"
+          title="Upload File"
+        >
+          📎
+        </button>
+
+
+        <button
+          type="button"
+          id="voiceBtn"
+          title="Voice Input"
+        >
+          🎤
+        </button>
+
+
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Message NEXORA AI..."
+          autocomplete="off"
+        >
+
+
+        <button
+          type="button"
+          id="sendBtn"
+          title="Send"
+        >
+          ➤
+        </button>
+
+      </div>
+
+
+      <!-- ================= FILE PREVIEW ================= -->
+      <div
+        id="filePreview"
+        class="file-preview"
+        style="display:none;"
+      >
+
+        <!-- IMAGE PREVIEW -->
+        <div
+          id="imagePreviewContainer"
+          class="image-preview-container"
+          style="display:none;"
+        >
+
+          <img
+            id="imagePreview"
+            src=""
+            alt="Selected image"
+          >
+
+        </div>
+
+
+        <!-- FILE INFO -->
+        <div class="file-info">
+
+          <span id="fileIcon">
+            📎
+          </span>
+
+          <span id="fileName">
+            No file selected
+          </span>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="removeFileBtn"
+          title="Remove File"
+        >
+          ✕
+        </button>
+
+      </div>
+
+
+      <p class="disclaimer">
+        NEXORA AI can make mistakes.
+        Check important information.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= PROFILE MODAL ================= -->
+  <div
+    id="profileModal"
+    class="modal"
+  >
+
+    <div class="modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close="profileModal"
+      >
+        ✕
+      </button>
+
+
+      <div class="profile-avatar">
+        👤
+      </div>
+
+
+      <h2 id="profileName">
+        User
+      </h2>
+
+
+      <p id="profileEmail">
+        email@example.com
+      </p>
+
+
+      <div class="profile-info">
+
+        <div>
+          <span>Account</span>
+          <b>NEXORA AI User</b>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= SETTINGS MODAL ================= -->
+  <div
+    id="settingsModal"
+    class="modal"
+  >
+
+    <div class="modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close="settingsModal"
+      >
+        ✕
+      </button>
+
+
+      <h2>⚙️ Settings</h2>
+
+
+      <div class="setting-item">
+
+        <div>
+
+          <b>Appearance</b>
+
+          <p>
+            Switch between dark and light mode
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="settingsThemeBtn"
+        >
+          🌙
+        </button>
+
+      </div>
+
+
+      <div class="setting-item">
+
+        <div>
+
+          <b>Clear Chat History</b>
+
+          <p>
+            Remove all saved conversations
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="deleteHistoryBtn"
+          class="danger-btn"
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
